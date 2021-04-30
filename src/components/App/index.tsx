@@ -1,5 +1,17 @@
 import React from "react";
+import { CSSProperties } from "react";
 
-const App: React.FC = () => <div>Hello World Mofo!</div>;
+export interface AppProps {
+    rootStyle?: CSSProperties;
+}
+
+const App: React.FC<AppProps> = ({children, rootStyle}) => {
+    return  (
+        <div>
+            Hello World Mofo!
+            {children}
+        </div>
+    );
+}
 
 export default App;

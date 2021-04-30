@@ -29,6 +29,12 @@ module.exports = {
     ],
   },
 
+  mode: "development",
+
+  stats: {
+    errorDetails: true,
+  },
+
   // Telling webpack which extensions
   // we are interested in.
   resolve: {
