@@ -8,12 +8,14 @@ import Router from "./Router";
 
 ReactDOM.render(
     <React.StrictMode>
-        <CssBaseline/>
-        <BrowserRouter>
-            <App>
-                <Router disableHeaderFooter={true} />
-            </App>
-        </BrowserRouter>
+        <Provider>
+            <CssBaseline/>
+            <BrowserRouter>
+                <App>
+                    <Router disableHeaderFooter={false} />
+                </App>
+            </BrowserRouter>
+        </Provider>
     </React.StrictMode>,
     document.getElementById("root")
 );
