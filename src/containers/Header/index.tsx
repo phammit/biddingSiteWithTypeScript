@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 import AppBar from "@material-ui/core/AppBar";
 import ToolBar from "@material-ui/core/Toolbar";
 import LanguageSelector from "../../components/LanguageSelector";
+import Typography from "@material-ui/core/Typography";
 
 
 const useStyles = makeStyles(() => ({
@@ -17,7 +18,8 @@ const Header: React.FC<headerProps> = ({}) => {
         <div>
             <AppBar position="static">
                 <ToolBar>
-                    Header
+                    <Typography>Header</Typography>
+                    
                     <LanguageSelector/>
                 </ToolBar>
             </AppBar>

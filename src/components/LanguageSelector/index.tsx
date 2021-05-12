@@ -22,28 +22,28 @@ export interface languageSelectorProps { }
 
 const LanguageSelector: React.FC<languageSelectorProps> = ({ }) => {
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
+    const [selectedLanguage, setSelectedLanguage] = React.useState('English');
 
     const handleChange = (event: React.ChangeEvent<{name?: string | undefined;
         value: unknown | string;}>) => {
             if (typeof event.target.value === "string") {
-                    setAge(event.target.value);
+                    setSelectedLanguage(event.target.value);
             }
     };
 
     return (
         <div>
             <FormControl className={classes.formControl}>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <InputLabel id="demo-simple-select-label">Language</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={age}
+                    value={selectedLanguage}
                     onChange={handleChange}
                 >
-                    <MenuItem value={"10"}>Ten</MenuItem>
-                    <MenuItem value={"20"}>Twenty</MenuItem>
-                    <MenuItem value={"30"}>Thirty</MenuItem>
+                    <MenuItem value={"English"}>English</MenuItem>
+                    <MenuItem value={"Francais"}>Francais</MenuItem>
+                    <MenuItem value={"Deutsch"}>Deutsch</MenuItem>
                 </Select>
             </FormControl>
         </div>
