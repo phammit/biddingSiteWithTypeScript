@@ -8,7 +8,6 @@ export interface AppProps {
 const App: React.FC<AppProps> = ({children, rootStyle}) => {
     return  (
         <div>
-            Hello World Mofo!
             {children}
         </div>
     );
