@@ -6,13 +6,13 @@ const theme = createMuiTheme({
             main: '#90a4ae'
         }
     },
-    overrides: {
+    /**overrides: {
         MuiAppBar: {
             colorPrimary: {
                 backgroundColor: '#fafafa',
             }
         },
-    },
+    },*/
 })
 
 export default theme;
