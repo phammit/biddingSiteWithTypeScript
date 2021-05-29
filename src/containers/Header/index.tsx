@@ -9,11 +9,13 @@ import { classicNameResolver } from "typescript";
 import Theme from "../../theme";
 import purple from "@material-ui/core/colors/purple";
 
-
+//need to use creatStyles for TypeScript type widening
+//https://material-ui.com/guides/typescript/as
 const useStyles = makeStyles(() => createStyles({
     grow: {
         flexGrow: 1,
-        //backgroundColor: '#fafafa',//purple[500]
+        //backgroundColor: '#fafafa',//purple[500] 
+        //updating style of component with override in theme
     },  
 }));
 

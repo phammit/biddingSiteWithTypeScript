@@ -4,10 +4,16 @@ import Header from "./containers/Header";
 import DropDownHeader from "./containers/DropDownHeader";
 import Body from "./pages/Body";
 import Home from "./pages/Home";
+import ListingPage from "./pages/ListingPage";
 
 export interface RouterProps {
     //extraRoutes?: ReactNode | Node;
     disableHeaderFooter: Boolean;
+}
+
+export interface NotFoundProps {};
+const NotFound: React.FC<{}> = ({})=> {
+    return (<div>NotFound</div>);
 }
 
 const Router: React.FC<RouterProps> = ({ disableHeaderFooter }) => {
@@ -19,7 +25,15 @@ const Router: React.FC<RouterProps> = ({ disableHeaderFooter }) => {
                 render={ props => (
                     <Body {...props}>
                         <Switch>
-                            <Route path="/" component={Home} exact />
+                            <Route path="/listingpage" >
+                                <Home />
+                            </Route>
+                            <Route path="">
+                                <NotFound />    
+                            </Route>
+                            <Route path="/" >
+                                <Home />
+                            </Route>
                         </Switch>
                     </Body>
                 )}
