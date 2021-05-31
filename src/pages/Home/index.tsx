@@ -4,9 +4,10 @@ import Card from "@material-ui/core/Card";
 //  will replace react-query with apollo
 import { useQuery } from 'react-query';
 import Grid from "@material-ui/core/Grid";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 //  Components
-import LinearProgress from "@material-ui/core/LinearProgress";
+import DisplayItemFakeStore from "../../components/DisplayItemFakeStore";
 
 const useStyles = makeStyles({
 
@@ -28,7 +29,7 @@ export interface ListingInformation {
 
 
 //interface for mock data from fakestoreapi.com
-export type CartItemType = {
+export type MockItemType = {
   id: number;
   category: string;
   description: string;
@@ -38,29 +39,32 @@ export type CartItemType = {
   amount: number;
 };
 //getting mock data
-const getProducts = async (): Promise<CartItemType[]> =>
+const getProducts = async (): Promise<MockItemType[]> =>
     await (await fetch('https://fakestoreapi.com/products')).json();
 
 
 //Home Component
 const Home: React.FC<HomeProps> = () => {
-    const [ displayList, setDisplayList ] = useState([] as CartItemType[]);
+    const [ displayList, setDisplayList ] = useState([] as MockItemType[]);
     
-    const {data, isLoading, error } = useQuery<CartItemType[]>(
+    const {data, isLoading, error } = useQuery<MockItemType[]>(
         'products',
         getProducts
     );
     console.log(data);
 
     if (isLoading) return <LinearProgress />;
+    if (error) return <div>Something went wrong ....</div>
 
     return(
       <div>
           Home Page
-          <Grid container spacing={2} justify="center" >      
-            <Grid item xs={6} sm={4} md={2} lg={2} xl={2}>
-                Grid Item
-            </Grid>
+          <Grid container spacing={2} >  
+            {data?.map(item => (    
+                <Grid item xs={6} sm={4} md={2} lg={2} xl={2}> 
+                    <DisplayItemFakeStore item={item}/>
+                </Grid>
+            ))}
           </Grid>
       </div>  
     );

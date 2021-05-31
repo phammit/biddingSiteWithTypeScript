@@ -1,12 +1,46 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
+import { Grid, Card, CardActions, CardContent, CardMedia, CardActionArea , Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-interface DisplayItemProps {};
+//  Types
+import { MockItemType } from "../../pages/Home";
 
-const DisplayItemFakeStore: React.FC<DisplayItemProps> = ({}) => {
+
+const useStyles = makeStyles({
+    root: {
+        maxWidth: 345,
+    }
+});
+
+interface DisplayItemProps {
+    item: MockItemType;
+};
+
+/**
+  type MockItemType = {
+  id: number;
+  category: string;
+  description: string;
+  image: string;
+  price: number;
+  title: string;
+  amount: number;
+}; */
+
+const DisplayItemFakeStore: React.FC<DisplayItemProps> = ({item}) => {
+    const classes = useStyles();
 
     return (
-        <div>Display Item</div>
+            <Card id={item.id.toString()} className={classes.root}>
+                <CardActionArea onClick={() => {alert('clicked')}}>
+                        <CardContent>
+                            <CardMedia component="img" height="220" image={item.image} />
+                            <Typography>
+                                {item.title}
+                            </Typography>
+                        </CardContent>
+                </CardActionArea>
+            </Card>
     );
 }
 
