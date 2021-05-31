@@ -25,14 +25,14 @@ const Router: React.FC<RouterProps> = ({ disableHeaderFooter }) => {
                 render={ props => (
                     <Body {...props}>
                         <Switch>
-                            <Route path="/listingpage" >
+                            <Route path="/listingpage" exact>
+                                <ListingPage />
+                            </Route>
+                            <Route path="/" exact>
                                 <Home />
                             </Route>
                             <Route path="">
                                 <NotFound />    
-                            </Route>
-                            <Route path="/" >
-                                <Home />
                             </Route>
                         </Switch>
                     </Body>
