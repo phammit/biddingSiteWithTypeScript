@@ -1,10 +1,15 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+
+//components
 import Header from "./containers/Header";
 import DropDownHeader from "./containers/DropDownHeader";
 import Body from "./pages/Body";
 import Home from "./pages/Home";
 import ListingPage from "./pages/ListingPage";
+import Footer from "./containers/Footer";
+import ProductGallery from "./pages/ProductGallery";
+import SearchResults from "./pages/SearchResults";
 
 export interface RouterProps {
     //extraRoutes?: ReactNode | Node;
@@ -25,11 +30,17 @@ const Router: React.FC<RouterProps> = ({ disableHeaderFooter }) => {
                 render={ props => (
                     <Body {...props}>
                         <Switch>
+                            <Route path="/" exact>
+                                <Home />
+                            </Route>
                             <Route path="/listingpage" exact>
                                 <ListingPage />
                             </Route>
-                            <Route path="/" exact>
-                                <Home />
+                            <Route path="/searchresults" exact>
+                                <SearchResults />
+                            </Route>
+                            <Route path="/productgallery" exact>
+                                <ProductGallery />
                             </Route>
                             <Route path="">
                                 <NotFound />    
@@ -38,6 +49,9 @@ const Router: React.FC<RouterProps> = ({ disableHeaderFooter }) => {
                     </Body>
                 )}
             />
+
+            {!disableHeaderFooter && <Route component={Footer} />}
+
         </React.Fragment>
     );
 }
