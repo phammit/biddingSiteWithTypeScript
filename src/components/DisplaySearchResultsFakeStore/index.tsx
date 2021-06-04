@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     }
 });
 
-interface DisplayItemProps {
+interface DisplaySearchResultsFakeStoreProps {
     item: MockItemType;
 };
 
@@ -27,7 +27,7 @@ interface DisplayItemProps {
   amount: number;
 }; */
 
-const DisplayItemFakeStore: React.FC<DisplayItemProps> = ({item}) => {
+const DisplaySearchResultsFakeStore: React.FC<DisplaySearchResultsFakeStoreProps> = ({item}) => {
     const classes = useStyles();
 
     return (
@@ -35,6 +35,9 @@ const DisplayItemFakeStore: React.FC<DisplayItemProps> = ({item}) => {
                 <CardActionArea onClick={() => {alert('clicked')}}>
                         <CardContent>
                             <CardMedia component="img" height="220" image={item.image} />
+                            <Typography>
+                                {item.title}
+                            </Typography>
                             <Typography>
                                 ${item.price}
                             </Typography>
@@ -44,4 +47,4 @@ const DisplayItemFakeStore: React.FC<DisplayItemProps> = ({item}) => {
     );
 }
 
-export default DisplayItemFakeStore;
+export default DisplaySearchResultsFakeStore;
