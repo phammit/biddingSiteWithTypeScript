@@ -1,6 +1,8 @@
 import React from "react";
-import { Grid, Breadcrumbs, Typography, Link, LinearProgress, Paper, Card } from "@material-ui/core";
+import { Grid, Breadcrumbs, Typography, Link, LinearProgress, Card, CardMedia, Paper } from "@material-ui/core";
+import Image from "material-ui-image";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
+import { WithStyles } from "@material-ui/styles";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 //carousel
@@ -63,8 +65,11 @@ const ListingPage: React.FC<ListingPageProps> = ({}) => {
         'products',
         getProducts
     );
+    console.log(data);
     if (isLoading) return <LinearProgress />;
     if (error) return <div>Something went wrong ....</div>
+
+
 
     return (
         <Grid container spacing={6} justify="center">
@@ -93,10 +98,17 @@ const ListingPage: React.FC<ListingPageProps> = ({}) => {
                             <Grid item xs={11}>
                                 <Paper>Pictures of product with Carousel</Paper>
                                 <Carousel responsive={responsive}>
+                                    {data?.map(item => {
+                                        return(
+                                        <Image src={item.image} key={item.id}/>
+                                    )})}
                                     <div>Item 1</div>
                                     <div>Item 2</div>
                                     <div>Item 3</div>
                                     <div>Item 4</div>
+                                    <Image src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" />
+                                    <div>???????</div>
+                                    <Image src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" />
                                 </Carousel>
                             </Grid>
                             <Grid item xs={11} justify="flex-start">
@@ -124,3 +136,21 @@ const ListingPage: React.FC<ListingPageProps> = ({}) => {
 }
 
 export default ListingPage;
+
+
+
+/**
+ * 
+ * 
+ * {data?.map(item => {
+                                        <div>{item.price}</div>
+                                    })}
+
+                                    <div>
+                                        
+                                        <img      
+                                            src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+                                        />  
+                                        
+                                    </div>
+ */
